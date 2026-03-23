@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { @apply font-sans text-gray-900 bg-white antialiased; margin: 0; }
+}
+
+@layer components {
+  /* ── Exact FestMobile button styles ── */
+  .btn-brand {
+    @apply inline-flex items-center justify-center gap-2
+           bg-[#E8452A] text-white font-semibold text-sm
+           px-6 py-2.5 rounded-full
+           hover:bg-[#d03a20] transition-colors duration-150;
+  }
+  .btn-brand-outline {
+    @apply inline-flex items-center justify-center gap-2
+           border border-[#E8452A] text-[#E8452A] font-semibold text-sm
+           px-6 py-2.5 rounded-full bg-white
+           hover:bg-[#fff5f3] transition-colors duration-150;
+  }
+  .btn-login {
+    @apply inline-flex items-center justify-center
+           bg-[#E8452A] text-white font-semibold text-sm
+           px-5 py-2 rounded-full
+           hover:bg-[#d03a20] transition-colors duration-150;
+  }
+
+  /* ── Slider nav arrows ── */
+  .slider-arrow {
+    @apply absolute top-1/2 -translate-y-1/2 z-20
+           w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm
+           flex items-center justify-center shadow
+           hover:bg-white transition-colors cursor-pointer border-0;
+  }
+}

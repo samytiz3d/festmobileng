@@ -10,3 +10,25 @@
 9 verbose logfile logs-max:10 dir:/app/.home/.npm/_logs/2026-09-01T13_05_13_396Z-
 10 verbose logfile /app/.home/.npm/_logs/2026-09-01T13_05_13_396Z-debug-0.log
 11 silly logfile done cleaning log files
+12 verbose stack Error: command failed
+12 verbose stack     at promiseSpawn (/usr/local/lib/node_modules/npm/node_modules/@npmcli/promise-spawn/lib/index.js:22:22)
+12 verbose stack     at spawnWithShell (/usr/local/lib/node_modules/npm/node_modules/@npmcli/promise-spawn/lib/index.js:124:10)
+12 verbose stack     at promiseSpawn (/usr/local/lib/node_modules/npm/node_modules/@npmcli/promise-spawn/lib/index.js:12:12)
+12 verbose stack     at runScriptPkg (/usr/local/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/run-script-pkg.js:79:13)
+12 verbose stack     at runScript (/usr/local/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/run-script.js:9:12)
+12 verbose stack     at #run (/usr/local/lib/node_modules/npm/lib/commands/run-script.js:131:13)
+12 verbose stack     at async RunScript.exec (/usr/local/lib/node_modules/npm/lib/commands/run-script.js:40:7)
+12 verbose stack     at async Npm.exec (/usr/local/lib/node_modules/npm/lib/npm.js:207:9)
+12 verbose stack     at async module.exports (/usr/local/lib/node_modules/npm/lib/cli/entry.js:74:5)
+13 verbose pkgid festmobile@1.0.0
+14 error path /app
+15 error command failed
+16 error signal SIGTERM
+17 error command sh -c vite --host 0.0.0.0 --port 5173
+18 verbose cwd /app
+19 verbose os Linux 6.12.105-fly
+20 verbose node v22.23.2
+21 verbose npm  v10.9.8
+22 verbose exit 1
+23 verbose code 1
+24 error A complete log of this run can be found in: /app/.home/.npm/_logs/2026-09-01T13_05_13_396Z-debug-0.log

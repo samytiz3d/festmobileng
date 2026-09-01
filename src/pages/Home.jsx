@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { usePartnerModal } from '../hooks/usePartnerModal.jsx'
 
@@ -328,10 +328,10 @@ function VoiceAndData() {
                   href={plan.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-64 lg:w-80 flex flex-col rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 group"
+                  className="w-64 lg:w-80 flex flex-col rounded-lg overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 group"
                 >
                 {/* Plan image */}
-                <div className="aspect-[4/3] overflow-hidden bg-gray-100">
+                <div className="aspect-[4/3.33] overflow-hidden bg-gray-100">
                   <img
                     src={plan.img}
                     alt={plan.name}
@@ -344,7 +344,7 @@ function VoiceAndData() {
                   <h3 className="font-bold text-gray-900 text-base mb-1">{plan.name}</h3>
                   <p className="text-xs text-gray-500 leading-relaxed flex-1">{plan.desc}</p>
                   <div className="mt-4">
-                    <span className="inline-block bg-[#E8452A] text-white text-xs font-semibold px-4 py-1.5 rounded-full group-hover:bg-[#d03a20] transition-colors">
+                    <span className="inline-block bg-[#E8452A] text-white text-xs font-semibold px-4 py-1.5 rounded-md group-hover:bg-[#d03a20] transition-colors">
                       Buy Now
                     </span>
                   </div>
@@ -440,7 +440,7 @@ function AppSection() {
                 href="https://apps.apple.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-black text-white px-4 py-2.5 rounded-xl text-sm font-medium hover:bg-gray-800 transition-colors"
+                className="flex items-center gap-2 bg-black text-white px-4 py-2.5 rounded-md text-sm font-medium hover:bg-gray-800 transition-colors"
               >
                 {/* Apple icon SVG */}
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -455,7 +455,7 @@ function AppSection() {
                 href="https://play.google.com/store"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-black text-white px-4 py-2.5 rounded-xl text-sm font-medium hover:bg-gray-800 transition-colors"
+                className="flex items-center gap-2 bg-black text-white px-4 py-2.5 rounded-md text-sm font-medium hover:bg-gray-800 transition-colors"
               >
                 {/* Play store icon */}
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -488,7 +488,7 @@ function AppSection() {
               <img
                 src={PH.appScreen}
                 alt="FestMobile App"
-                className="w-full rounded-3xl shadow-2xl"
+                className="w-full rounded-lg shadow-2xl"
                 // TODO: replace with actual app screenshot from assets
               />
             </div>
@@ -553,7 +553,7 @@ function FAQSection() {
         </p>
 
         {/* Accordion */}
-        <div className="divide-y divide-gray-100 border border-gray-100 rounded-xl overflow-hidden">
+        <div className="divide-y divide-gray-100 border border-gray-100 rounded-md overflow-hidden">
           {FAQS.map((faq, i) => (
             <div key={i}>
               <button

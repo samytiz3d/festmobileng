@@ -188,7 +188,7 @@ function DesktopItem({ item, active, onEnter, onLeave, onModal }) {
 
       {/* Dropdown */}
       {item.children && active && (
-        <div className="absolute top-full left-0 mt-0 bg-white shadow-lg border border-gray-100 rounded-lg py-1 min-w-[200px] z-50">
+        <div className="absolute top-full left-0 mt-0 bg-white shadow-lg border border-gray-100 rounded-md py-1 min-w-[200px] z-50">
           {item.children.map((child) => (
             <DropdownChild key={child.label} item={child} onModal={onModal} />
           ))}
@@ -231,7 +231,7 @@ function DropdownChild({ item, onModal }) {
         </svg>
       </button>
       {open && (
-        <div className="absolute left-full top-0 bg-white shadow-lg border border-gray-100 rounded-lg py-1 min-w-[180px]">
+        <div className="absolute left-full top-0 bg-white shadow-lg border border-gray-100 rounded-md py-1 min-w-[180px]">
           {item.children.map((c) => (
             <DropdownChild key={c.label} item={c} onModal={onModal} />
           ))}

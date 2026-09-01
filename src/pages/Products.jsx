@@ -81,7 +81,7 @@ function PrepaidSection() {
           {PREPAID_PLANS.map((plan) => (
             <div
               key={plan.name}
-              className="flex flex-col rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 group"
+              className="flex flex-col rounded-lg overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 group"
             >
               <div className="aspect-[4/3] overflow-hidden bg-gray-100">
                 <img
@@ -98,7 +98,7 @@ function PrepaidSection() {
                     href="https://myaccount.festmobile.ng/addons"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block bg-[#E8452A] text-white text-sm font-semibold px-5 py-2 rounded-full group-hover:bg-[#d03a20] transition-colors"
+                    className="inline-block bg-[#E8452A] text-white text-sm font-semibold px-5 py-2 rounded-md group-hover:bg-[#d03a20] transition-colors"
                   >
                     Buy Now
                   </a>
@@ -145,7 +145,7 @@ function PostpaidSection() {
           {POSTPAID_PLANS.map((plan) => (
             <div
               key={plan.name}
-              className="flex flex-col rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 bg-white group"
+              className="flex flex-col rounded-lg overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 bg-white group"
             >
               <div className="aspect-[4/3] overflow-hidden bg-gray-100">
                 <img
@@ -160,7 +160,7 @@ function PostpaidSection() {
                 <div className="mt-5">
                   <Link
                     to="/contact"
-                    className="inline-block bg-[#E8452A] text-white text-sm font-semibold px-5 py-2 rounded-full group-hover:bg-[#d03a20] transition-colors"
+                    className="inline-block bg-[#E8452A] text-white text-sm font-semibold px-5 py-2 rounded-md group-hover:bg-[#d03a20] transition-colors"
                   >
                     Contact Sales
                   </Link>
@@ -202,7 +202,7 @@ function FinancialSection() {
               Learn More
             </a>
           </div>
-          <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100">
+          <div className="aspect-[4/3] rounded-lg overflow-hidden bg-gray-100">
             <img
               src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop"
               alt="Routepay"

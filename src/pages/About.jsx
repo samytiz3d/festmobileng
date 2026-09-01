@@ -55,7 +55,7 @@ function MissionSection() {
               affordable, reliable data that never slows down your momentum.
             </p>
           </div>
-          <div className="aspect-video rounded-2xl overflow-hidden bg-gray-100">
+          <div className="aspect-video rounded-lg overflow-hidden bg-gray-100">
             <img
               src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop"
               alt="Mission"
@@ -103,7 +103,7 @@ function ValuesSection() {
         </h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {VALUES.map((v) => (
-            <div key={v.title} className="bg-white p-6 rounded-xl shadow-sm">
+            <div key={v.title} className="bg-white p-6 rounded-md shadow-sm">
               <div className="text-4xl mb-4">{v.icon}</div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">{v.title}</h3>
               <p className="text-sm text-gray-600 leading-relaxed">{v.desc}</p>

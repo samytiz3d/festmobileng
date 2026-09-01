@@ -7,7 +7,7 @@ export default {
         brand: '#E8452A', // FestMobile primary red-orange
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['"Poppins"', 'sans-serif'], // Using Poppins throughout
       },
     },
   },

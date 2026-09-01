@@ -85,7 +85,7 @@ function FAQSection() {
           Quick answers to common questions about FestMobile services.
         </p>
 
-        <div className="max-w-3xl mx-auto divide-y divide-gray-100 border border-gray-100 rounded-xl overflow-hidden">
+        <div className="max-w-3xl mx-auto divide-y divide-gray-100 border border-gray-100 rounded-md overflow-hidden">
           {FAQS.map((faq, i) => (
             <div key={i}>
               <button
@@ -162,7 +162,7 @@ function SupportSection() {
           {CHANNELS.map((ch) => (
             <div
               key={ch.title}
-              className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200"
+              className="bg-white p-6 rounded-md shadow-sm hover:shadow-md transition-shadow duration-200"
             >
               <div className="text-4xl mb-4">{ch.icon}</div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">{ch.title}</h3>

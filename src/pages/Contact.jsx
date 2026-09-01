@@ -94,7 +94,7 @@ function ContactInfo() {
           {CONTACT_METHODS.map((m) => (
             <div
               key={m.title}
-              className="flex flex-col items-center text-center p-6 bg-gray-50 rounded-xl"
+              className="flex flex-col items-center text-center p-6 bg-gray-50 rounded-md"
             >
               <div className="text-[#E8452A] mb-4">{m.icon}</div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">{m.title}</h3>
@@ -140,7 +140,7 @@ function LocationSection() {
               </p>
             </div>
           </div>
-          <div className="aspect-video rounded-2xl overflow-hidden bg-gray-200">
+          <div className="aspect-video rounded-lg overflow-hidden bg-gray-200">
             <img
               src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop"
               alt="Office"

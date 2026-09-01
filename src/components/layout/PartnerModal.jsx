@@ -46,7 +46,7 @@ export default function PartnerModal() {
       <div className="absolute inset-0 bg-black/50" onClick={handleClose} />
 
       {/* Modal */}
-      <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-xl max-h-[90vh] flex flex-col overflow-hidden">
+      <div className="relative bg-white rounded-lg shadow-2xl w-full max-w-xl max-h-[90vh] flex flex-col overflow-hidden">
         {/* Header */}
         <div className="flex items-start justify-between p-6 border-b border-gray-100">
           <div>

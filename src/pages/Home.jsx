@@ -135,10 +135,46 @@ function HeroSlider() {
 // 4 cards: circular image, title, subtitle
 // ─────────────────────────────────────────────────────────────────────────────
 const QUICK_ACTIONS = [
-  { img: PH.sim,     title: 'Get a SIM',       sub: 'Get connected the right way',      href: 'https://myaccount.festmobile.ng/sim-activation' },
-  { img: PH.bundle,  title: 'Buy A Bundle',    sub: 'Simple plans. Smarter connectivity.', href: 'https://myaccount.festmobile.ng/addons' },
-  { img: PH.wallet,  title: 'Wallet',          sub: 'Simple, safe, and seamless',       href: 'https://routepay.com/' },
-  { img: PH.digital, title: 'Digital Services',sub: 'Do more online',                   href: 'https://myaccount.festmobile.ng/addons' },
+  {
+    title: 'Get a SIM',
+    sub: 'Get connected the right way',
+    href: 'https://myaccount.festmobile.ng/sim-activation',
+    icon: (
+      <svg className="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Buy A Bundle',
+    sub: 'Simple plans. Smarter connectivity.',
+    href: 'https://myaccount.festmobile.ng/addons',
+    icon: (
+      <svg className="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Wallet',
+    sub: 'Simple, safe, and seamless',
+    href: 'https://routepay.com/',
+    icon: (
+      <svg className="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Digital Services',
+    sub: 'Do more online',
+    href: 'https://myaccount.festmobile.ng/addons',
+    icon: (
+      <svg className="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+      </svg>
+    ),
+  },
 ]
 
 function QuickActions() {
@@ -154,14 +190,11 @@ function QuickActions() {
               rel="noopener noreferrer"
               className="flex flex-col items-center text-center gap-3 group"
             >
-              {/* Circular masked image */}
-              <div className="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden border-2 border-gray-100 group-hover:border-[#E8452A] transition-colors duration-200">
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  // TODO: replace with: import simImg from '../assets/images/Mask-group-3-1.png'
-                />
+              {/* Icon circle */}
+              <div className="w-28 h-28 md:w-36 md:h-36 rounded-full flex items-center justify-center bg-gray-50 border-2 border-gray-100 group-hover:border-[#E8452A] group-hover:bg-[#FFF5F3] transition-all duration-200 p-6 md:p-8">
+                <div className="text-gray-700 group-hover:text-[#E8452A] transition-colors duration-200">
+                  {item.icon}
+                </div>
               </div>
               <div>
                 <h3 className="font-bold text-gray-900 text-sm md:text-base group-hover:text-[#E8452A] transition-colors">
@@ -215,6 +248,34 @@ const PLANS = [
 ]
 
 function VoiceAndData() {
+  const [current, setCurrent] = React.useState(0)
+  const [isPaused, setIsPaused] = React.useState(false)
+  const scrollRef = React.useRef(null)
+
+  // Auto-scroll every 4 seconds
+  React.useEffect(() => {
+    if (isPaused) return
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % PLANS.length)
+    }, 4000)
+    return () => clearInterval(interval)
+  }, [isPaused])
+
+  // Scroll to current card
+  React.useEffect(() => {
+    if (scrollRef.current) {
+      const cardWidth = scrollRef.current.scrollWidth / PLANS.length
+      scrollRef.current.scrollTo({
+        left: cardWidth * current,
+        behavior: 'smooth',
+      })
+    }
+  }, [current])
+
+  const goTo = (index) => {
+    setCurrent((index + PLANS.length) % PLANS.length)
+  }
+
   return (
     <section className="py-14 px-4 bg-white border-t border-gray-100">
       <div className="max-w-[1200px] mx-auto">
@@ -226,37 +287,88 @@ function VoiceAndData() {
           </p>
         </div>
 
-        {/* Plan cards — horizontal scroll on mobile, 5-col grid on desktop */}
-        <div className="flex gap-5 overflow-x-auto pb-3 lg:grid lg:grid-cols-5 lg:overflow-visible">
-          {PLANS.map((plan) => (
-            <a
-              key={plan.name}
-              href={plan.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-shrink-0 w-52 lg:w-auto flex flex-col rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 group"
-            >
-              {/* Plan image */}
-              <div className="aspect-[4/3] overflow-hidden bg-gray-100">
-                <img
-                  src={plan.img}
-                  alt={plan.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  // TODO: replace with real plan images from /assets/images/
-                />
-              </div>
-              {/* Plan info */}
-              <div className="p-4 flex flex-col flex-1">
-                <h3 className="font-bold text-gray-900 text-base mb-1">{plan.name}</h3>
-                <p className="text-xs text-gray-500 leading-relaxed flex-1">{plan.desc}</p>
-                <div className="mt-4">
-                  <span className="inline-block bg-[#E8452A] text-white text-xs font-semibold px-4 py-1.5 rounded-full group-hover:bg-[#d03a20] transition-colors">
-                    Buy Now
-                  </span>
+        {/* Carousel wrapper */}
+        <div
+          className="relative"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          {/* Left arrow */}
+          <button
+            onClick={() => goTo(current - 1)}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 shadow-lg flex items-center justify-center hover:bg-white transition-colors"
+            aria-label="Previous"
+          >
+            <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          {/* Right arrow */}
+          <button
+            onClick={() => goTo(current + 1)}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 shadow-lg flex items-center justify-center hover:bg-white transition-colors"
+            aria-label="Next"
+          >
+            <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* Plan cards — horizontal scroll, showing 3 at a time */}
+          <div
+            ref={scrollRef}
+            className="overflow-x-auto pb-3 scrollbar-hide"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            <div className="flex gap-5 w-max px-12">
+              {PLANS.map((plan) => (
+                <a
+                  key={plan.name}
+                  href={plan.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-64 lg:w-80 flex flex-col rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 group"
+                >
+                {/* Plan image */}
+                <div className="aspect-[4/3] overflow-hidden bg-gray-100">
+                  <img
+                    src={plan.img}
+                    alt={plan.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    // TODO: replace with real plan images from /assets/images/
+                  />
                 </div>
-              </div>
-            </a>
-          ))}
+                {/* Plan info */}
+                <div className="p-4 flex flex-col flex-1">
+                  <h3 className="font-bold text-gray-900 text-base mb-1">{plan.name}</h3>
+                  <p className="text-xs text-gray-500 leading-relaxed flex-1">{plan.desc}</p>
+                  <div className="mt-4">
+                    <span className="inline-block bg-[#E8452A] text-white text-xs font-semibold px-4 py-1.5 rounded-full group-hover:bg-[#d03a20] transition-colors">
+                      Buy Now
+                    </span>
+                  </div>
+                </div>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Dot indicators */}
+          <div className="flex justify-center gap-2 mt-6">
+            {PLANS.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => goTo(i)}
+                className={`rounded-full transition-all duration-300 ${
+                  i === current
+                    ? 'w-6 h-2.5 bg-[#E8452A]'
+                    : 'w-2.5 h-2.5 bg-gray-300 hover:bg-gray-400'
+                }`}
+                aria-label={`Go to plan ${i + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

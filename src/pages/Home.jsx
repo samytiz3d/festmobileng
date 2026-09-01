@@ -121,9 +121,11 @@ function HeroSlider() {
           <button
             key={i}
             onClick={() => go(i)}
-            className={`rounded-full transition-all duration-300 ${i === current ? 'w-6 h-2.5 bg-[#E8452A]' : 'w-2.5 h-2.5 bg-white/60'}`}
+            className="min-w-6 min-h-6 flex items-center justify-center p-1.5"
             aria-label={`Go to slide ${i + 1}`}
-          />
+          >
+            <span className={`rounded-full transition-all duration-300 ${i === current ? 'w-6 h-2.5 bg-[#E8452A]' : 'w-2.5 h-2.5 bg-white/60'}`} />
+          </button>
         ))}
       </div>
     </div>
@@ -360,13 +362,15 @@ function VoiceAndData() {
               <button
                 key={i}
                 onClick={() => goTo(i)}
-                className={`rounded-full transition-all duration-300 ${
+                className="min-w-6 min-h-6 flex items-center justify-center p-1.5"
+                aria-label={`Go to plan ${i + 1}`}
+              >
+                <span className={`rounded-full transition-all duration-300 ${
                   i === current
                     ? 'w-6 h-2.5 bg-[#E8452A]'
                     : 'w-2.5 h-2.5 bg-gray-300 hover:bg-gray-400'
-                }`}
-                aria-label={`Go to plan ${i + 1}`}
-              />
+                }`} />
+              </button>
             ))}
           </div>
         </div>
